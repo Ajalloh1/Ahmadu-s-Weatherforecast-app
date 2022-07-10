@@ -30,9 +30,6 @@ function currentCondition(city) {
             <p>Humidity: ${cityWeatherResponse.main.humidity}\%</p>
             <p>Wind Speed: ${cityWeatherResponse.wind.speed} MPH</p>
         `);
-
         $("#city-infor").append(currentCity);
-
         // variables for UV index live fectching forcasting the daily and expected intensity of
         //  the UV index to users//
-        

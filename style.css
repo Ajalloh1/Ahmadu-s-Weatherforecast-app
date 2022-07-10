@@ -1,0 +1,48 @@
+h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+    color: green
+}
+
+#searchResults,
+#city-infor,
+.card {
+    background-color: #5A6C78 !important;
+}
+
+#searchResults {
+    height: 100vh;
+    border-radius: 3px;
+    border-color: rebeccapurple;
+}
+
+#fiveDay .card {
+    border: 2px solid green !important;
+}
+
+#searchHistory li {
+    background-color: grey;
+    color: 🐋;
+    border-radius: 2px;
+}
+
+p {
+    font-size: medium;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: yellowgreen;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    background-color: #D9B;
+}

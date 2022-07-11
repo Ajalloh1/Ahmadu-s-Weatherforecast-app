@@ -1,20 +1,15 @@
 // global variables and moment format for now
-
 var apiKey = "d1e2d0763204896fd894698f5c6e27ee";
 var today = moment().format('LLL');
 var searchHistoryList = [];
-
-// start with first functions for fething the coddingtion now via url-Asynchronous JavaScript and XML or ajax//
+// start with first functions for fetching the conddingtion NOW via url-Asynchronous JavaScript and XML or ajax//
 function currentCondition(city) {
-
     var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
-
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(cityWeatherResponse) {
         console.log(cityWeatherResponse);
-        
         $("#weather-infor").css("display", "block");
         $("#city-infor").empty();
         var iconCode = cityWeatherResponse.weather[0].icon;
@@ -35,13 +30,11 @@ function currentCondition(city) {
         var lat = cityWeatherResponse.coord.lat;
         var lon = cityWeatherResponse.coord.lon;
         var uviQueryURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`;
-
         $.ajax({
             url: uviQueryURL,
             method: "GET"
         }).then(function(uviResponse) {
             console.log(uviResponse);
-
             var uvIndex = uviResponse.value;
             var uvIndexP = $(`
                 <p>UV Index: 
@@ -68,7 +61,6 @@ function currentCondition(city) {
 //funtions forcast for future weather conditions //
 function futureCondition(lat, lon) {
     var futureURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=current,minutely,hourly,alerts&appid=${apiKey}`;
-
     $.ajax({
         url: futureURL,
         method: "GET"
@@ -86,7 +78,6 @@ function futureCondition(lat, lon) {
 ///variables storing mmoment  with format using month dayth and year//
             var currDate = moment.unix(cityInfo.date).format("MMMM Do YYYY");
             var iconURL = `<img src="https://openweathermap.org/img/w/${cityInfo.icon}.png" alt="${futureResponse.daily[i].weather[0].main}" />`;
-
             //cards for next five days forcast displaying dates and weather conditions//
             var futureCard = $(`
                 <div class="pl-3">
@@ -100,7 +91,6 @@ function futureCondition(lat, lon) {
                     </div>
                 <div>
             `);
-
             $("#fiveDay").append(futureCard);
         }
     }); 
@@ -108,7 +98,6 @@ function futureCondition(lat, lon) {
 // onclick event listener and search history storage to local storage//
 $("#searchBtn").on("click", function(event) {
     event.preventDefault();
-
     var city = $("#enterCity").val().trim();
     currentCondition(city);
     if (!searchHistoryList.includes(city)) {
@@ -121,17 +110,14 @@ $("#searchBtn").on("click", function(event) {
     localStorage.setItem("city", JSON.stringify(searchHistoryList));
     console.log(searchHistoryList);
 });
-
 //retriving current weather details of cities in historic search//
 $(document).on("click", ".list-group-item", function() {
     var listCity = $(this).text();
     currentCondition(listCity);
 });
-
 ///displaying last seached city when dasboard is viewed//
 $(document).ready(function() {
     var searchHistoryArr = JSON.parse(localStorage.getItem("city"));
-
     if (searchHistoryArr !== null) {
         var lastSearchedIndex = searchHistoryArr.length - 1;
         var lastSearchedCity = searchHistoryArr[lastSearchedIndex];
@@ -139,5 +125,3 @@ $(document).ready(function() {
         console.log(`Last searched city: ${lastSearchedCity}`);
     }
 });
-
-

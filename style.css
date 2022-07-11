@@ -2,13 +2,16 @@ h1 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 50px;
     font-weight: 400;
-    color: green
+    color: white;
+}
+#five{
+    color:black;
 }
 
 #searchResults,
 #city-infor,
 .card {
-    background-color: #5A6C78 !important;
+    background-color: black !important;
 }
 
 #searchResults {
@@ -19,6 +22,7 @@ h1 {
 
 #fiveDay .card {
     border: 2px solid green !important;
+    
 }
 
 #searchHistory li {
@@ -41,6 +45,6 @@ h2,h3,h4,h5 {
 body {
     font-family: 'Courier New', Courier, monospace;
     font-size: large;
-    background-color: #D9B;
-    background-image: url(backg.png);
+    /* background-color: #D9B; */
+    background-image: url(images.jpeg);
 }
